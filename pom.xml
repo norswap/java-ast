@@ -192,6 +192,9 @@
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -200,15 +203,14 @@
         <dependency>
             <groupId>com.github.norswap</groupId>
             <artifactId>norswap-utils</artifactId>
-            <version>f80cfbc</version>
+            <version>-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.norswap</groupId>
             <artifactId>java-lexer</artifactId>
-            <version>1.0.0</version>
+            <version>-SNAPSHOT</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.testng</groupId>

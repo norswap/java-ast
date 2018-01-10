@@ -11,17 +11,17 @@ public class SuperChain implements IdentifierChain
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * The token representing the keyword.
-     */
-    public final Keyword keyword;
-
-    // ---------------------------------------------------------------------------------------------
-
-    /**
      * Optional type prefix (in principle, the type must be that of an enclosing class).
      * Might be null.
      */
     public final SimpleIdentifierChain type;
+
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The token representing the keyword.
+     */
+    public final Keyword keyword;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -33,11 +33,11 @@ public class SuperChain implements IdentifierChain
 
     // ---------------------------------------------------------------------------------------------
 
-    public SuperChain (Keyword keyword, SimpleIdentifierChain type, SimpleIdentifierChain suffix)
+    public SuperChain (SimpleIdentifierChain type, Keyword keyword, SimpleIdentifierChain suffix)
     {
         assert keyword.name.equals("super");
-        this.keyword = keyword;
         this.type = type;
+        this.keyword = keyword;
         this.suffix = suffix;
     }
 

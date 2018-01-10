@@ -11,13 +11,6 @@ public class This implements Node
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * The token representing the keyword.
-     */
-    public final Keyword keyword;
-
-    // ---------------------------------------------------------------------------------------------
-
-    /**
      * Optional type prefix (in principle, the type must be that of an enclosing class).
      * Might be null.
      */
@@ -25,11 +18,18 @@ public class This implements Node
 
     // ---------------------------------------------------------------------------------------------
 
-    public This (Keyword keyword, SimpleIdentifierChain type)
+    /**
+     * The token representing the keyword.
+     */
+    public final Keyword keyword;
+
+    // ---------------------------------------------------------------------------------------------
+
+    public This (SimpleIdentifierChain type, Keyword keyword)
     {
         assert keyword.name.equals("this");
-        this.keyword = keyword;
         this.type = type;
+        this.keyword = keyword;
     }
 
     // ---------------------------------------------------------------------------------------------

@@ -68,7 +68,7 @@ public final class BinaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     @Override public String toString() {
-        return "(" + left + " " + right + " " + token.name + ")";
+        return "Binary(" + token.name + ")(" + left + ", " + right + ")";
     }
 
     // ---------------------------------------------------------------------------------------------

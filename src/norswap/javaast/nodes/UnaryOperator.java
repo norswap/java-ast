@@ -59,7 +59,7 @@ public final class UnaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     @Override public String toString () {
-        return "(" + operand + "" + token.name + ")";
+        return "Unary(" + token.name + ")(" + operand + ")";
     }
 
     // ---------------------------------------------------------------------------------------------

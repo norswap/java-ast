@@ -33,7 +33,7 @@ public final class Literal implements Expression
     // ---------------------------------------------------------------------------------------------
 
     @Override public String toString () {
-        return token.toString();
+        return "Literal(" + token.toString() + ")";
     }
 
     // ---------------------------------------------------------------------------------------------

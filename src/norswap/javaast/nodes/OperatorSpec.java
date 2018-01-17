@@ -2,12 +2,12 @@ package norswap.javaast.nodes;
 
 import java.util.HashMap;
 
-import static norswap.javaast.nodes.Operator.Associativity.*;
+import static norswap.javaast.nodes.OperatorSpec.Associativity.*;
 
 /**
  * Expression operators (unary, binary and ternary) in Java.
  */
-public enum Operator
+public enum OperatorSpec
 {
     // ---------------------------------------------------------------------------------------------
 
@@ -54,10 +54,10 @@ public enum Operator
 
     // ---------------------------------------------------------------------------------------------
 
-    private static HashMap<String, Operator> string2op = new HashMap<>();
+    private static HashMap<String, OperatorSpec> string2op = new HashMap<>();
     static {
-        for (Operator op: Operator.values())
-            string2op.put(op.string, op);
+        for (OperatorSpec spec: OperatorSpec.values())
+            string2op.put(spec.string, spec);
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ public enum Operator
      * (e.g. {@code MULTIPLICATION} for "*"). Beware that for "+" and "-", the binary version and
      * returned, and for "++" and "--", the prefix version is returned.
      */
-    public static Operator from (String string) {
+    public static OperatorSpec from (String string) {
         return string2op.get(string);
     }
 
@@ -123,7 +123,7 @@ public enum Operator
 
     // ---------------------------------------------------------------------------------------------
 
-    Operator (int precedence, int operands, String string)
+    OperatorSpec (int precedence, int operands, String string)
     {
         this.precedence = precedence;
         this.operands = operands;
@@ -133,7 +133,7 @@ public enum Operator
 
     // ---------------------------------------------------------------------------------------------
 
-    Operator (int precedence, int operands, Associativity associativity, String string)
+    OperatorSpec (int precedence, int operands, Associativity associativity, String string)
     {
         this.precedence = precedence;
         this.operands = operands;

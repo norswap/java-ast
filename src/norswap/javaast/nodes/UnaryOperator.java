@@ -1,5 +1,7 @@
 package norswap.javaast.nodes;
 
+import norswap.javalexer.tokens.Operator;
+
 /**
  * A unary operator expression.
  */
@@ -8,16 +10,16 @@ public final class UnaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * The unary operator.
+     * The unary operator specification.
      */
-    public final Operator operator;
+    public final OperatorSpec operator;
 
     // ---------------------------------------------------------------------------------------------
 
     /**
      * The token representing the operator.
      */
-    public final norswap.javalexer.tokens.Operator token;
+    public final Operator token;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -28,8 +30,7 @@ public final class UnaryOperator implements Expression
 
     // ---------------------------------------------------------------------------------------------
 
-    public UnaryOperator (norswap.javalexer.tokens.Operator token,
-                          Operator operator, Expression operand)
+    public UnaryOperator (Operator token, OperatorSpec operator, Expression operand)
     {
         assert operator.operands == 1;
         this.token = token;

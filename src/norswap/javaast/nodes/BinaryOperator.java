@@ -1,5 +1,7 @@
 package norswap.javaast.nodes;
 
+import norswap.javalexer.tokens.Operator;
+
 /**
  * A binary operator expression.
  */
@@ -8,16 +10,16 @@ public final class BinaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * The binary operator.
+     * The binary operator specification.
      */
-    public final Operator operator;
+    public final OperatorSpec operator;
 
     // ---------------------------------------------------------------------------------------------
 
     /**
      * The token representing the operator.
      */
-    public final norswap.javalexer.tokens.Operator token;
+    public final Operator token;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -35,8 +37,7 @@ public final class BinaryOperator implements Expression
 
     // ---------------------------------------------------------------------------------------------
 
-    public BinaryOperator (norswap.javalexer.tokens.Operator token,
-                           Operator operator, Expression left, Expression right)
+    public BinaryOperator (Operator token, OperatorSpec operator, Expression left, Expression right)
     {
         assert operator.operands == 2;
         this.token = token;

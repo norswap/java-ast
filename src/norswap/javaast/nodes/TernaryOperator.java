@@ -5,9 +5,9 @@ public class TernaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * Shorthand towards the tenary operator.
+     * Shorthand towards the tenary operator spec.
      */
-    public static Operator operator = Operator.TERNARY;
+    public static OperatorSpec operator = OperatorSpec.TERNARY;
 
     // ---------------------------------------------------------------------------------------------
 

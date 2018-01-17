@@ -3,7 +3,7 @@ package norswap.javaast.nodes;
 /**
  * Encapsulates a literal token.
  */
-public final class Literal implements Expression
+public final class LiteralExpr implements Expression
 {
     // ---------------------------------------------------------------------------------------------
 
@@ -14,14 +14,14 @@ public final class Literal implements Expression
 
     // ---------------------------------------------------------------------------------------------
 
-    public Literal (norswap.javalexer.tokens.Literal token) {
+    public LiteralExpr (norswap.javalexer.tokens.Literal token) {
         this.token = token;
     }
 
     // ---------------------------------------------------------------------------------------------
 
     @Override public boolean equals (Object o) {
-        return this == o || (o instanceof Literal) && token.equals(((Literal) o).token);
+        return this == o || (o instanceof LiteralExpr) && token.equals(((LiteralExpr) o).token);
     }
 
     // ---------------------------------------------------------------------------------------------

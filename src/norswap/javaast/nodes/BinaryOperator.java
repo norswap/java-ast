@@ -10,9 +10,9 @@ public final class BinaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * The binary operator specification.
+     * Properties of the binary operator.
      */
-    public final OperatorSpec operator;
+    public final OperatorProperties operator;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -37,7 +37,7 @@ public final class BinaryOperator implements Expression
 
     // ---------------------------------------------------------------------------------------------
 
-    public BinaryOperator (Operator token, OperatorSpec operator, Expression left, Expression right)
+    public BinaryOperator (Operator token, OperatorProperties operator, Expression left, Expression right)
     {
         assert operator.operands == 2;
         this.token = token;

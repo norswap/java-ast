@@ -2,23 +2,24 @@ package norswap.javaast.nodes;
 
 import java.util.HashMap;
 
-import static norswap.javaast.nodes.OperatorSpec.Associativity.*;
+import static norswap.javaast.nodes.OperatorProperties.Associativity.*;
+import static norswap.javaast.nodes.OperatorProperties.Type.*;
 
 /**
  * Expression operators (unary, binary and ternary) in Java.
  */
-public enum OperatorSpec
+public enum OperatorProperties
 {
     // ---------------------------------------------------------------------------------------------
 
-    POSTFIX_INCREMENT               (14, 1, "++"),
-    POSTFIX_DECREMENT               (14, 1, "--"),
-    PREFIX_INCREMENT                (13, 1, "++"),
-    PREFIX_DECREMENT                (13, 1, "--"),
-    UNARY_PLUS                      (13, 1, "+"),
-    UNARY_MINUS                     (13, 1, "-"),
-    BITWISE_COMPLEMENT              (13, 1, "~"),
-    LOGICAL_COMPLEMENT              (13, 1, "!"),
+    POSTFIX_INCREMENT               (14, 1, POSTFIX, "++"),
+    POSTFIX_DECREMENT               (14, 1, POSTFIX, "--"),
+    PREFIX_INCREMENT                (13, 1, PREFIX, "++"),
+    PREFIX_DECREMENT                (13, 1, PREFIX, "--"),
+    UNARY_PLUS                      (13, 1, PREFIX, "+"),
+    UNARY_MINUS                     (13, 1, PREFIX, "-"),
+    BITWISE_COMPLEMENT              (13, 1, PREFIX, "~"),
+    LOGICAL_COMPLEMENT              (13, 1, PREFIX, "!"),
     MULTIPLICATION                  (12, 2, LEFT, "*"),
     DIVISION                        (12, 2, LEFT, "/"),
     REMAINDER                       (12, 2, LEFT, "%"),
@@ -54,10 +55,10 @@ public enum OperatorSpec
 
     // ---------------------------------------------------------------------------------------------
 
-    private static HashMap<String, OperatorSpec> string2op = new HashMap<>();
+    private static HashMap<String, OperatorProperties> string2op = new HashMap<>();
     static {
-        for (OperatorSpec spec: OperatorSpec.values())
-            string2op.put(spec.string, spec);
+        for (OperatorProperties props: OperatorProperties.values())
+            string2op.put(props.string, props);
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -67,7 +68,7 @@ public enum OperatorSpec
      * (e.g. {@code MULTIPLICATION} for "*"). Beware that for "+" and "-", the binary version and
      * returned, and for "++" and "--", the prefix version is returned.
      */
-    public static OperatorSpec from (String string) {
+    public static OperatorProperties from (String string) {
         return string2op.get(string);
     }
 
@@ -84,6 +85,23 @@ public enum OperatorSpec
         LEFT,
         /** Right associativity for a binary or ternary operator. */
         RIGHT
+    }
+
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The type of operator: PREFIX, BINARY or POSTFIX.
+     */
+    public enum Type
+    {
+        /** An operator with a single right operand. */
+        PREFIX,
+        /** An operator with a single left operand. */
+        POSTFIX,
+        /** An operator with a left operand and a right operand. */
+        BINARY,
+        /** The ternary operator. */
+        TERNARY
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -117,27 +135,36 @@ public enum OperatorSpec
     // ---------------------------------------------------------------------------------------------
 
     /**
+     * Whether the operator is a prefix, binary or postfix operator.
+     */
+    public final Type type;
+
+    // ---------------------------------------------------------------------------------------------
+
+    /**
      * String representation of the operator (e.g. "<=").
      */
     public final String string;
 
     // ---------------------------------------------------------------------------------------------
 
-    OperatorSpec (int precedence, int operands, String string)
+    OperatorProperties (int precedence, int operands, Type type, String string)
     {
         this.precedence = precedence;
         this.operands = operands;
         this.associativity = null;
+        this.type = type;
         this.string = string;
     }
 
     // ---------------------------------------------------------------------------------------------
 
-    OperatorSpec (int precedence, int operands, Associativity associativity, String string)
+    OperatorProperties (int precedence, int operands, Associativity associativity, String string)
     {
         this.precedence = precedence;
         this.operands = operands;
         this.associativity = associativity;
+        this.type = operands == 2 ? Type.BINARY : Type.TERNARY;
         this.string = string;
     }
 

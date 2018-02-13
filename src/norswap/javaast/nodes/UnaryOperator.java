@@ -10,9 +10,9 @@ public final class UnaryOperator implements Expression
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * The unary operator specification.
+     * Properties of the unary operator.
      */
-    public final OperatorSpec operator;
+    public final OperatorProperties operator;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ public final class UnaryOperator implements Expression
 
     // ---------------------------------------------------------------------------------------------
 
-    public UnaryOperator (Operator token, OperatorSpec operator, Expression operand)
+    public UnaryOperator (Operator token, OperatorProperties operator, Expression operand)
     {
         assert operator.operands == 1;
         this.token = token;

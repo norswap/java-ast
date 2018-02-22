@@ -1,6 +1,9 @@
 package norswap.javaast.nodes;
 
-import java.util.HashMap;
+import norswap.utils.multi.MultiHashMap;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static norswap.javaast.nodes.OperatorProperties.Associativity.*;
 import static norswap.javaast.nodes.OperatorProperties.Type.*;
@@ -55,21 +58,20 @@ public enum OperatorProperties
 
     // ---------------------------------------------------------------------------------------------
 
-    private static HashMap<String, OperatorProperties> string2op = new HashMap<>();
+    private static MultiHashMap<String, OperatorProperties> string2op = new MultiHashMap<>();
     static {
         for (OperatorProperties props: OperatorProperties.values())
-            string2op.put(props.string, props);
+            string2op.add(props.string, props);
     }
 
     // ---------------------------------------------------------------------------------------------
 
     /**
-     * Returns the operator corresponding to the given string representation
-     * (e.g. {@code MULTIPLICATION} for "*"). Beware that for "+" and "-", the binary version and
-     * returned, and for "++" and "--", the prefix version is returned.
+     * Returns the operators corresponding to the given string representation, or an empty
+     * array if no such operator exist.
      */
-    public static OperatorProperties from (String string) {
-        return string2op.get(string);
+    public static OperatorProperties[] from (String string) {
+        return string2op.get(string).toArray(new OperatorProperties[0]);
     }
 
     // ---------------------------------------------------------------------------------------------

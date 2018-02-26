@@ -2,9 +2,6 @@ package norswap.javaast.nodes;
 
 import norswap.utils.multi.MultiHashMap;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import static norswap.javaast.nodes.OperatorProperties.Associativity.*;
 import static norswap.javaast.nodes.OperatorProperties.Type.*;
 
@@ -154,7 +151,7 @@ public enum OperatorProperties
     {
         this.precedence = precedence;
         this.operands = operands;
-        this.associativity = null;
+        this.associativity = type == PREFIX ? RIGHT : LEFT;
         this.type = type;
         this.string = string;
     }

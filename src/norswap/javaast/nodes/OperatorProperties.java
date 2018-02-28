@@ -55,6 +55,13 @@ public enum OperatorProperties
 
     // ---------------------------------------------------------------------------------------------
 
+    /**
+     * The maximum precedence that an operator can have.
+     */
+    public static int MAX_PRECEDENCE = 14;
+
+    // ---------------------------------------------------------------------------------------------
+
     private static MultiHashMap<String, OperatorProperties> string2op = new MultiHashMap<>();
     static {
         for (OperatorProperties props: OperatorProperties.values())
